@@ -11,7 +11,7 @@ const Login = ({ setToken }) => {
     e.preventDefault();
     try {
       // Send POST request to backend login endpoint
-      const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/login', {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, {
         username,
         password,
       });
