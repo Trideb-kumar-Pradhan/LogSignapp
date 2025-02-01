@@ -24,11 +24,17 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Middleware Setup
-app.use(cors({
-  origin: process.env.FRONTEND_URL, // Restrict allowed origins to frontend URL
+// app.use(cors({
+//   origin: process.env.FRONTEND_URL, // Restrict allowed origins to frontend URL
+//   methods: ['GET', 'POST'], // Allowed HTTP methods
+//   credentials: true, // Allows cookies or authorization headers
+// }));
+
+const corsOptions = {
+  origin: 'https://loginsignupapp.vercel.app',  // Add your frontend's Vercel URL here
   methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // Allows cookies or authorization headers
-}));
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers for requests
+};
 
 app.use(bodyParser.json());
 
@@ -38,7 +44,7 @@ app.post('/signup', async (req, res) => {
   const { username, password, deptname } = req.body;
   
   try {
-    // Check if the username already exists
+
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ message: 'Username already exists' });
