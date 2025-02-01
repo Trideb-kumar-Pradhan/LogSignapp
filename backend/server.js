@@ -36,7 +36,7 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers for requests
   credentials: true, 
 };
-
+app.use(cors(corsOptions)); 
 app.use(bodyParser.json());
 
 // Signup Route
