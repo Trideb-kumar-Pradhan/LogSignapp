@@ -31,7 +31,7 @@ const User = mongoose.model('User', userSchema);
 // }));
 
 const corsOptions = {
-  origin: 'https://loginsignupapp.vercel.app',  // Add your frontend's Vercel URL here
+  origin: 'https://loginsignupapp.vercel.app/',  // Add your frontend's Vercel URL here
   methods: ['GET', 'POST'], // Allowed HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers for requests
 };
